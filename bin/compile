@@ -1,0 +1,21 @@
+#!/bin/bash
+
+BUILD_DIR="$1"
+
+indent() {
+    sed -u 's/^/       /'
+}
+
+if [ ! -z "$SLIDESLIVE_STAGING" ]; then
+    environment="staging"
+    assets_dir="$BUILD_DIR/public/staging-assets"
+else
+    environment="production"
+    assets_prefix="$BUILD_DIR/public/assets"
+fi
+
+
+echo "-----> Cleaning up SlidesLive $environment environtment..."
+
+echo "Removing $assets_dir..." | indent
+
